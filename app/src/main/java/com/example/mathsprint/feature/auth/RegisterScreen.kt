@@ -66,15 +66,6 @@ fun RegisterScreen(
     // Animation states
     val logoScale = remember { Animatable(0.5f) }
     val contentAlpha = remember { Animatable(0f) }
-    val bonusScale by rememberInfiniteTransition().animateFloat(
-        initialValue = 1f,
-        targetValue = 1.03f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1500, easing = FastOutSlowInEasing),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "bonusScale"
-    )
 
     // Sign up button animation
     var isSignupButtonPressed by remember { mutableStateOf(false) }
@@ -136,74 +127,6 @@ fun RegisterScreen(
 
             Spacer(Modifier.height(24.dp))
 
-            // Bonus Card
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .scale(bonusScale)
-                    .alpha(contentAlpha.value)
-                    .shadow(
-                        elevation = 8.dp,
-                        shape = RoundedCornerShape(16.dp),
-                        ambientColor = GoldYellow.copy(alpha = 0.4f),
-                        spotColor = GoldYellow.copy(alpha = 0.4f)
-                    ),
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFF1A1A0A)),
-                border = BorderStroke(1.dp, GoldYellow.copy(alpha = 0.6f))
-            ) {
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(48.dp)
-                            .background(
-                                Brush.radialGradient(
-                                    colors = listOf(
-                                        Color(0xFFFFD700),
-                                        Color(0xFFFFB800),
-                                        Color(0xFFFF8C00)
-                                    )
-                                ),
-                                CircleShape
-                            ),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            "$",
-                            style = MaterialTheme.typography.headlineSmall.copy(
-                                color = Color(0xFF8B4513),
-                                fontWeight = FontWeight.Bold
-                            )
-                        )
-                    }
-
-                    Spacer(Modifier.width(16.dp))
-
-                    Column {
-                        Text(
-                            "WELCOME BONUS",
-                            style = MaterialTheme.typography.labelMedium.copy(
-                                color = GoldYellow,
-                                fontWeight = FontWeight.Bold
-                            )
-                        )
-                        Spacer(Modifier.height(4.dp))
-                        Text(
-                            "Get 100 Coins + 100 Gems Free!",
-                            style = MaterialTheme.typography.bodyMedium.copy(
-                                color = Color(0xFFFFD54F)
-                            )
-                        )
-                    }
-                }
-            }
-
-            Spacer(Modifier.height(24.dp))
 
             // Form Fields
             OutlinedTextField(
