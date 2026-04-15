@@ -54,6 +54,71 @@ class FirebaseDataSource @Inject constructor(
         }
     }
 
+    suspend fun updateUserPerformance(
+        uid: String,
+        xp: Int,
+        wins: Int,
+        totalGamesPlayed: Int,
+        score: Int,
+        accuracy: Float
+    ) {
+        try {
+            Log.d("FirebaseDataSource", "Updating performance for $uid: XP=$xp, Wins=$wins, Score=$score")
+            val updates = hashMapOf(
+                "xp" to xp,
+                "wins" to wins,
+                "totalGamesPlayed" to totalGamesPlayed,
+                "totalScore" to score,
+                "averageAccuracy" to accuracy,
+                "lastScoreUpdate" to System.currentTimeMillis()
+            ) as Map<String, Any>
+            usersRef.child(uid).updateChildren(updates).await()
+        } catch (e: Exception) {
+            Log.e("FirebaseDataSource", "Error updating user performance", e)
+            throw e
+        }
+    }
+
+    suspend fun updateUserRanking(
+        uid: String,
+        rankLevel: Int,
+        totalScore: Int,
+        winRate: Float,
+        dailyImprovement: Int
+    ) {
+        try {
+            Log.d("FirebaseDataSource", "Updating ranking for $uid: Level=$rankLevel, Score=$totalScore")
+            val updates = hashMapOf(
+                "rankLevel" to rankLevel,
+                "totalScore" to totalScore,
+                "winRate" to winRate,
+                "dailyImprovement" to dailyImprovement
+            ) as Map<String, Any>
+            usersRef.child(uid).updateChildren(updates).await()
+        } catch (e: Exception) {
+            Log.e("FirebaseDataSource", "Error updating user ranking", e)
+            throw e
+        }
+    }
+
+    suspend fun updateUserStreak(
+        uid: String,
+        streak: Int,
+        bestStreak: Int
+    ) {
+        try {
+            Log.d("FirebaseDataSource", "Updating streak for $uid: Current=$streak, Best=$bestStreak")
+            val updates = hashMapOf(
+                "streak" to streak,
+                "bestStreak" to bestStreak
+            ) as Map<String, Any>
+            usersRef.child(uid).updateChildren(updates).await()
+        } catch (e: Exception) {
+            Log.e("FirebaseDataSource", "Error updating user streak", e)
+            throw e
+        }
+    }
+
     suspend fun getUserData(uid: String): Map<String, Any>? {
         return try {
             Log.d("FirebaseDataSource", "Getting user data for $uid")

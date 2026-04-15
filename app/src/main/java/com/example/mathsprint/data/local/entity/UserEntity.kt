@@ -20,6 +20,16 @@ data class UserEntity(
     val nextLifeAt: Long = 0L,
     val rankLevel: Int = 1,
     val winRate: Float = 0f,
-    val isGuest: Boolean = false
+    val isGuest: Boolean = false,
+    // Ranking and performance tracking
+    val wins: Int = 0,
+    val totalGamesPlayed: Int = 0,
+    val totalScore: Int = 0,
+    val dailyImprovement: Int = 0,
+    val yesterdayScore: Int = 0,
+    val bestStreak: Int = 0,
+    val totalQuizzesCompleted: Int = 0,
+    val averageAccuracy: Float = 0f,
+    val lastScoreUpdate: Long = System.currentTimeMillis()
 )
 
