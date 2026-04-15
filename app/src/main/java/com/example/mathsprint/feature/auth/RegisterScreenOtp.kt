@@ -374,6 +374,30 @@ fun RegisterScreenOtp(
 
             Spacer(Modifier.height(16.dp))
 
+            // Change Email Link (when OTP is shown)
+            if (showOtpField) {
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    TextButton(
+                        onClick = {
+                            showOtpField = false
+                            otpInput = ""
+                            message = ""
+                        }
+                    ) {
+                        Text(
+                            "Change Email Address",
+                            color = accentColor,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                Spacer(Modifier.height(16.dp))
+            }
+
             // Login Link - SAME STYLING AS RegisterScreen
             Row(
                 horizontalArrangement = Arrangement.Center,
