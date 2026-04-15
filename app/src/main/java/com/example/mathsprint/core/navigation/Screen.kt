@@ -10,6 +10,7 @@ sealed class Screen(val route: String) {
     data object Leaderboard : Screen("leaderboard")
     data object DailyChallenge : Screen("daily_challenge")
     data object Profile : Screen("profile")
+    data object GuestQuiz : Screen("guest_quiz")
     data class Battle(val chapterId: Int, val lessonId: Int) : Screen("battle/$chapterId/$lessonId") {
         companion object {
             fun createRoute(chapterId: Int, lessonId: Int) = "battle/$chapterId/$lessonId"

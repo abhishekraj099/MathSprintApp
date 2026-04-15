@@ -81,7 +81,9 @@ fun WelcomeScreen(navController: NavController) {
                 )
             }
             Spacer(Modifier.height(16.dp))
-            TextButton(onClick = { }) {
+            TextButton(
+                onClick = { navController.navigate(Screen.GuestQuiz.route) }
+            ) {
                 Text(
                     "Continue as Guest",
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)

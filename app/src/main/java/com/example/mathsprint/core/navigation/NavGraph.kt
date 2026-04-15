@@ -10,6 +10,7 @@ import com.example.mathsprint.feature.auth.LoginScreen
 import com.example.mathsprint.feature.auth.RegisterScreenOtp
 import com.example.mathsprint.feature.battle.BattleScreen
 import com.example.mathsprint.feature.daily.DailyChallengeScreen
+import com.example.mathsprint.feature.guest.GuestQuizScreen
 import com.example.mathsprint.feature.home.HomeScreen
 import com.example.mathsprint.feature.leaderboard.LeaderboardScreen
 import com.example.mathsprint.feature.onboarding.OnboardingScreen
@@ -53,6 +54,9 @@ fun MathSprintNavGraph(navController: NavHostController) {
         }
         composable(Screen.Profile.route) {
             ProfileScreen(navController = navController)
+        }
+        composable(Screen.GuestQuiz.route) {
+            GuestQuizScreen(navController = navController)
         }
         composable(
             route = "battle/{chapterId}/{lessonId}",
