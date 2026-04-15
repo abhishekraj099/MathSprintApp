@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "210631035688",
+    "project_id": "mathsprints-f79e2",
+    "storage_bucket": "mathsprints-f79e2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210631035688:android:07636a61724087782b1e1d",
+        "android_client_info": {
+          "package_name": "com.example.mathsprint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTh5nB3JJ5lu4E822oPSS1TbOm1YeL4dQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
